@@ -1,0 +1,550 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+@font-face {
+  font-family: "futura md bt";
+  src: url("../fonts/FutuBd.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Poppins";
+  text-decoration: none;
+  list-style: none;
+  user-select: none;
+  user-zoom: none;
+}
+body {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background: #f3f3f3;
+}
+h1 {
+  font-family: "futura md bt";
+}
+.wrapper {
+  background: #fbfbfb;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 100px -20px rgba(0, 0, 0, 0.1),
+    0 100px 200px -100px rgba(0, 0, 0, 0.1);
+}
+/* Login Page Styling */
+body.login .wrapper {
+  padding: 30px 20px;
+  border-radius: 20px;
+}
+body.login .wrapper form .field {
+  margin-top: 15px;
+}
+body.login .wrapper form input {
+  width: 350px;
+  height: 45px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+body.login .wrapper form input:focus {
+  border-color: #007bff;
+}
+body.login .wrapper form .error-text {
+  width: 100% !important;
+  padding: 8px 0 !important;
+}
+body.login .wrapper form .field button {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 5px 0;
+  background: #007bff;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+/* Dashboard Styling */
+body.dashboard .wrapper {
+  width: 400px;
+  height: 600px;
+  border-radius: 20px;
+}
+.wrapper header {
+  width: 100%;
+  height: 115px;
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.wrapper header .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.wrapper header .actions {
+  display: flex;
+}
+.wrapper header .row .actions i {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+.wrapper header .row .actions i:hover {
+  background: #f7f7f7;
+}
+.wrapper header .row.sec {
+  margin-top: 15px;
+  display: block;
+}
+.wrapper header .row.sec ul {
+  display: flex;
+  justify-content: space-between;
+  background: #f3f3f3;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid transparent;
+  transition: 0.2s ease-out;
+}
+.wrapper header .row.sec ul:active {
+  border: 1px solid #eee;
+}
+.wrapper header .row.sec ul li {
+  width: 100%;
+  text-align: center;
+  padding: 8px 0;
+  font-weight: 600;
+  transition: 0.3s;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: "Futura md bt";
+}
+.wrapper header .row.sec ul li:hover {
+  background: #fbfbfb;
+}
+.wrapper header .row.sec ul li.active {
+  background-color: #fbfbfb;
+}
+/* Wrapper Main */
+.wrapper main {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1200px;
+  height: 485px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  transition: 0.3s;
+}
+.wrapper main .chats,
+.search-cont .chats {
+  overflow-y: scroll;
+  padding-top: 10px;
+}
+.wrapper main .chats::-webkit-scrollbar,
+.search-cont .chats::-webkit-scrollbar {
+  width: 0;
+}
+.wrapper main .chats .user,
+.search-cont .chats .user {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  transition: 0.2s;
+}
+.wrapper main .chats .user:hover,
+.search-cont .chats .user:hover {
+  background: #f7f7f7;
+}
+.chats .user .user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  margin-right: 20px;
+}
+.chats .user .user-det .name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 18px;
+  margin-top: 5px;
+}
+.chats .user .user-det .last-msg {
+  color: #6f7e81;
+  font-size: 15px;
+}
+.wrapper main .groups {
+}
+.wrapper main .status {
+}
+/* Chat box */
+.chatbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 600px;
+  background: #fff;
+  z-index: 3;
+  transform: translateX(-400px);
+  transition: 0.3s;
+}
+.chatbox.active {
+  transform: translateX(0);
+}
+.chatbox header {
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.chatbox header .left {
+  display: flex;
+  align-items: center;
+}
+.chatbox header .left .back {
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+.chatbox header .left .back:hover {
+  background: #f7f7f7;
+}
+.left .back i {
+  font-size: 20px;
+  padding: 0 5px 0 10px;
+}
+.left .back .user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  transform: scale(0.8);
+}
+.left .user-det {
+  transition: 0.3s;
+  padding: 5px;
+  border-radius: 5px 10px;
+}
+.left .user-det:hover {
+  background-color: #f7f7f7;
+}
+.left .user-det .name {
+  font-weight: 600;
+  line-height: 16px;
+  margin-top: 5px;
+}
+.left .user-det .status {
+  font-size: 15px;
+  color: #6f7e81;
+}
+.chatbox main {
+  display: block;
+  position: relative;
+  width: 400px;
+  height: 460px;
+  padding: 20px 0;
+  overflow-y: scroll;
+}
+.chatbox main::-webkit-scrollbar {
+  width: 0;
+}
+.chatbox main div {
+  margin-bottom: 10px;
+  padding: 0 15px;
+}
+.chatbox main .outgoing {
+  float: right;
+  clear: both;
+}
+.chatbox main .incoming {
+  float: left;
+  clear: both;
+}
+.chatbox main .incoming .msg {
+  background: #fff;
+  color: #343a40;
+  border: 1px solid #d4d6d7;
+}
+.chatbox main div .msg {
+  width: fit-content;
+  max-width: 300px;
+  word-wrap: break-word;
+  padding: 8px;
+  border-radius: 2px;
+  background: #007bff;
+  color: #fff;
+  font-size: 13px;
+  line-height: 15px;
+}
+.chatbox footer {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -10px 20px -10px rgba(0, 0, 0, 0.04);
+}
+.chatbox footer .field input {
+  width: 330px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 15px;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+}
+.chatbox footer .field input:focus {
+  border-color: #007bff;
+}
+.chatbox footer button {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 17px;
+  margin-left: 5px;
+  color: #fff;
+  background: #007bff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+/* user-pop-up */
+.user-pop-up {
+  width: 400px;
+  height: 600px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  transform: translateY(600px);
+  transition: 0.2s;
+}
+.user-pop-up.active {
+  transform: translateY(0);
+}
+.user-pop-up i {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  transition: 0.3s;
+}
+.user-pop-up i:hover {
+  background-color: #f7f7f7;
+}
+.user-pop-up .user-profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 50px 30px 0 30px;
+}
+.user-profile .user-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  border: 7px solid #fff;
+  box-shadow: 0 0 0 2px #00c853;
+}
+.user-profile .name {
+  font-weight: bolder;
+  font-size: 30px;
+  margin-top: 10px;
+}
+.user-profile .username {
+  font-weight: bold;
+  color: #00c853;
+}
+.user-profile .joined {
+  margin-top: 10px;
+}
+.user-profile .desc {
+  margin: 20px 0;
+}
+.user-profile .block-user-btn,
+.report-user-btn {
+  text-transform: uppercase;
+  padding: 10px 50px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.user-profile .block-user-btn {
+  background: #dc3545;
+  color: #fff;
+}
+.user-profile .report-user-btn {
+  background: rgba(255, 0, 0, 0.06);
+  color: #ea001a;
+}
+/* Search Cont */
+.search-cont {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+  height: 600px;
+  background: #fff;
+  transform: translateY(600px);
+  transition: 0.2s;
+  z-index: 1;
+}
+.search-cont header,
+.settings-cont header,
+.pass-cont header {
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.search-cont header i,
+.settings-cont header i {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: 0.2s;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 5px;
+}
+.search-cont header i:hover,
+.settings-cont header i:hover {
+  background: #f7f7f7;
+}
+.search-cont header input {
+  width: 320px;
+  height: 45px;
+  border-radius: 10px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  font-size: 17px;
+}
+/* settings-cont */
+.settings-cont,
+.pass-cont {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400px;
+  height: 600px;
+  background-color: #fff;
+  transition: 0.2s;
+  transform: translateX(400px);
+}
+.settings-cont header,
+.pass-cont header {
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.settings-cont header i {
+  margin: 0;
+}
+.settings-cont main,
+.pass-cont main {
+  width: 400px;
+  height: 530px;
+  display: block;
+  padding: 20px 0;
+  overflow-y: scroll;
+}
+.settings-cont main::-webkit-scrollbar,
+.pass-cont main::-webkit-scrollbar {
+  width: 0;
+}
+.settings-cont main .cont form,
+.pass-cont main .cont form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+main .cont .user-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  position: relative;
+}
+main .cont .user-img label.settings-image-label {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  font-size: 22px;
+}
+main .cont .field {
+  margin-top: 15px;
+}
+main .cont .field label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+main .cont .field input {
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  font-size: 17px;
+}
+main .cont .field button {
+  width: 300px;
+  padding: 10px;
+  background: rgba(0, 143, 255, 0.1);
+  color: #007bff;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+main .cont .field.save button {
+  background: #007bff;
+  color: #fff;
+}
+main .cont .error-text,
+body.login .wrapper form .error-text {
+  color: #ea001a;
+  background: #ea001b1e;
+  border-radius: 10px;
+  width: 300px;
+  padding: 10px 0;
+  text-align: center;
+  margin-top: 15px;
+}
+.pass-cont {
+  transform: translate(0, 600px);
+}
+.pass-cont main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
